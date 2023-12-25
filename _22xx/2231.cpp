@@ -5,8 +5,11 @@ int main(){
     int N;
     scanf("%d", &N);
     
+    int len = 0;
+    for(int n = N; n != 0; n /= 10) ++len;
+    
     int res = 0;
-    for(int i = 0; i < N; ++i){
+    for(int i = N - len*9; i < N; ++i){
         int sum = i, tmp = i;
         
         while(tmp != 0){

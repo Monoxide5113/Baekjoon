@@ -1,0 +1,5 @@
+# CPH file ignore
+**/.cph/
+
+# VSCode Setting file ignore
+.vscode/

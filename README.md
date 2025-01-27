@@ -1,4 +1,4 @@
 # Baekjoon
 Baekjoon Problem Solution
 - **Programming Language:** C++17  
-- **Compiler:** GCC 11.1.0
+- **Compiler:** G++ 11.1.0

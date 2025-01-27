@@ -24,7 +24,7 @@ int main()
         return true;
     };
 
-    std::bitset<MAX + 1> answers;
+    std::bitset<MAX> answers;
     for (int num = MIN; num < MAX; ++num)
         answers.set(num, is_valid(num));
 

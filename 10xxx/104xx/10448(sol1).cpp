@@ -16,7 +16,7 @@ int main()
         tri_nums.push_back(cur_tri);
     }
 
-    std::bitset<MAX + 1> tri_sums;
+    std::bitset<MAX> tri_sums;
     const int tri_cnt = tri_nums.size();
     for (int i = 0; i < tri_cnt; ++i) {
         for (int j = i; j < tri_cnt; ++j) {

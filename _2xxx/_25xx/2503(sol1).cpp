@@ -24,9 +24,9 @@ int main()
         return true;
     };
 
-    std::bitset<MAX> answers;
+    std::bitset<MAX> possible_answers;
     for (int num = MIN; num < MAX; ++num)
-        answers.set(num, is_valid(num));
+        possible_answers.set(num, is_valid(num));
 
     int n;
     std::cin >> n;
@@ -46,14 +46,13 @@ int main()
         std::cin >> question >> strike >> ball;
 
         for (int answer = MIN; answer < MAX; ++answer) {
-            if (!answers[answer]) continue;
+            if (!possible_answers[answer]) continue;
             if (is_matched(question, answer, strike, ball)) continue;
-            answers.reset(answer);
+            possible_answers.reset(answer);
         }
     }
 
-    const int res = answers.count();
-    std::cout << res << '\n';
+    std::cout << possible_answers.count() << '\n';
 
     return 0;
 }

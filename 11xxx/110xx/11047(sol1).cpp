@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -14,13 +13,12 @@ int main()
     for (auto& val : coins)
         std::cin >> val;
 
-    std::reverse(coins.begin(), coins.end());
-
     int res = 0, remaining_amount = k;
-    for (const auto& val : coins) {
-        if (!remaining_amount) break;
-        res += remaining_amount / val;
-        remaining_amount %= val;
+    for (auto it = coins.crbegin(); it != coins.crend(); ++it) {
+        const auto coin = *it;
+        res += remaining_amount / coin;
+        remaining_amount %= coin;
+        if (remaining_amount == 0) break;
     }
 
     std::cout << res << '\n';

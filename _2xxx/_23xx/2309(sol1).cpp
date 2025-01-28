@@ -33,7 +33,7 @@ int main()
     }
 
     const auto [fake_idx1, fake_idx2] = fake_idxs;
-    for (const auto& val : dwarfs) {
+    for (const auto val : dwarfs) {
         if (val == dwarfs[fake_idx1] || val == dwarfs[fake_idx2]) continue;
         std::cout << val << '\n';
     }

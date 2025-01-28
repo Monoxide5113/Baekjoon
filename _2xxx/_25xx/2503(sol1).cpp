@@ -15,7 +15,7 @@ int main()
     auto is_valid = [](int num) {
         const auto str_num = std::to_string(num);
         std::bitset<DIGIT_CNT> used;
-        for (const auto& val : str_num) {
+        for (const auto val : str_num) {
             const int digit = val - ZERO_CHAR;
             if (!digit) return false;
             if (used[digit]) return false;

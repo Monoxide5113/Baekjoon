@@ -4,6 +4,8 @@
 #include <utility>
 #include <vector>
 
+using Meeting = std::pair<int, int>;
+
 int main()
 {
     std::ios::sync_with_stdio(false);
@@ -12,7 +14,7 @@ int main()
     int n;
     std::cin >> n;
 
-    std::vector<std::pair<int, int>> meetings(n);
+    std::vector<Meeting> meetings(n);
     for (auto& [start, end] : meetings)
         std::cin >> start >> end;
     

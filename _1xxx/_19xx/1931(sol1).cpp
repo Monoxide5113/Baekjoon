@@ -3,6 +3,8 @@
 #include <utility>
 #include <vector>
 
+using Meeting = std::pair<int, int>;
+
 int main()
 {
     std::ios::sync_with_stdio(false);
@@ -11,12 +13,12 @@ int main()
     int n;
     std::cin >> n;
 
-    std::vector<std::pair<int, int>> meetings(n);
+    std::vector<Meeting> meetings(n);
     for (auto& [start, end] : meetings)
         std::cin >> start >> end;
     
     std::sort(meetings.begin(), meetings.end(), [](auto a, auto b) {
-        return std::pair(a.second, a.first) < std::pair(b.second, b.first);
+        return a.second != b.second ? a.second < b.second : a.first < b.first;
     });
 
     int res = 1, last_meeting_end = meetings[0].second;

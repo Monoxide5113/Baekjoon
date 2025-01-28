@@ -3,6 +3,8 @@
 #include <iostream>
 #include <utility>
 
+using Problem = std::pair<int, int>;
+
 constexpr int TOTAL_CNT = 11;
 constexpr int PENALTY_FACTOR = 20;
 
@@ -11,7 +13,7 @@ int main()
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
-    std::array<std::pair<int, int>, TOTAL_CNT> problems;
+    std::array<Problem, TOTAL_CNT> problems;
     for (auto& [d, v] : problems)
         std::cin >> d >> v;
 

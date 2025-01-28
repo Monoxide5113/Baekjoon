@@ -14,7 +14,7 @@ int main()
     int n;
     std::cin >> n;
 
-    auto get_digit_sum = [](int num) {
+    auto sum_digits = [](int num) {
         const auto str_num = std::to_string(num);
         return std::accumulate(str_num.cbegin(), str_num.cend(), 0, [](int acc, char x) {
             return acc + (x - ZERO_CHAR); 
@@ -25,7 +25,7 @@ int main()
     const int n_digit_cnt = std::to_string(n).size();
     const int min_num = std::max(1, n - MAX_VAL_SINGLE_DIGIT * n_digit_cnt), max_num = n;
     for (int num = min_num; num < max_num; ++num) {
-        const int cur_sum = num + get_digit_sum(num);
+        const int cur_sum = num + sum_digits(num);
         if (cur_sum != n) continue;
         res = num;
         break;

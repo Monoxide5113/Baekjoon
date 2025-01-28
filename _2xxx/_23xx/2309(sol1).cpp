@@ -24,7 +24,7 @@ int main()
         for (int i = 0; i < TOTAL_CNT; ++i) {
             for (int j = i + 1; j < TOTAL_CNT; ++j) {
                 if (dwarfs[i] + dwarfs[j] != diff) continue;
-                return std::pair(i, j);   
+                return std::pair<int, int>(dwarfs[i], dwarfs[j]);   
             }
         }
     };

@@ -1,3 +1,4 @@
+#include <array>
 #include <bitset>
 #include <iostream>
 #include <string>
@@ -34,11 +35,19 @@ int main()
     auto is_matched = [](int question, int answer, int strike, int ball) {
         int cur_strike = 0, cur_ball = 0;
         const auto str_question = std::to_string(question), str_answer = std::to_string(answer);
+        std::array<int, DIGIT_CNT> digit_pos;
+        digit_pos.fill(-1);
         for (int i = 0; i < DIGIT; ++i) {
-            if (str_answer.find(str_question[i]) == std::string::npos) continue;
-            (str_question[i] == str_answer[i]) ? ++cur_strike : ++cur_ball;
+            const int digit = str_question[i] - ZERO_CHAR;
+            digit_pos[digit] = i;
         }
-        return cur_strike == strike && cur_ball == ball;
+        for (int i = 0; i < DIGIT; ++i) {
+            const int digit = str_answer[i] - ZERO_CHAR;
+            const int pos = digit_pos[digit];
+            if (pos == -1) continue;
+            (i == pos) ? ++cur_strike : ++cur_ball;
+        }
+        return strike == cur_strike && ball == cur_ball;
     };
 
     for (int qry = 0; qry < n; ++qry) {
@@ -52,7 +61,8 @@ int main()
         }
     }
 
-    std::cout << possible_answers.count() << '\n';
+    const int res = possible_answers.count();
+    std::cout << res << '\n';
 
     return 0;
 }

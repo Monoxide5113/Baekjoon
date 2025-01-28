@@ -22,7 +22,8 @@ int main()
         int white_cnt = 0, black_cnt = 0;
         for (int y = 0; y < CUT_SIZE; ++y) {
             for (int x = 0; x < CUT_SIZE; ++x) {
-                const char target_color = ((y + x) % 2 == 0) ? WHITE : BLACK;
+                const bool is_white = (y + x) % 2 == 0;
+                const char target_color = is_white ? WHITE : BLACK;
                 (board[start_y + y][start_x + x] == target_color) ? ++white_cnt : ++black_cnt;
             }
         }

@@ -16,19 +16,19 @@ int main()
             std::cin >> val;
 
     auto scan_y = [&](int y) {
-        int ret = 1, cnt = 1;
+        int ret = 1, cur_cnt = 1;
         for (int x = 0; x < n - 1; ++x) {
-            cnt = (board[y][x] == board[y][x + 1]) ? cnt + 1 : 1;
-            ret = std::max(ret, cnt);
+            cur_cnt = (board[y][x] == board[y][x + 1]) ? cur_cnt + 1 : 1;
+            ret = std::max(ret, cur_cnt);
         }
         return ret;
     };
 
     auto scan_x = [&](int x) {
-        int ret = 1, cnt = 1;
+        int ret = 1, cur_cnt = 1;
         for (int y = 0; y < n - 1; ++y) {
-            cnt = (board[y][x] == board[y + 1][x]) ? cnt + 1 : 1;
-            ret = std::max(ret, cnt);
+            cur_cnt = (board[y][x] == board[y + 1][x]) ? cur_cnt + 1 : 1;
+            ret = std::max(ret, cur_cnt);
         }
         return ret;
     };

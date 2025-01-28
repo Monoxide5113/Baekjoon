@@ -16,9 +16,9 @@ int main()
 
     auto get_digit_sum = [](int num) {
         const auto str_num = std::to_string(num);
-        auto sum_digit = [](int sum, char x) { return sum + (x - ZERO_CHAR); };
-        return std::accumulate(str_num.begin(), str_num.end(), 0, sum_digit);
-    };
+        return std::accumulate(str_num.cbegin(), str_num.cend(), 0, 
+            [](int acc, char ch) { return acc + (ch - ZERO_CHAR); });
+        };
 
     int res = 0;
     const int n_digit_cnt = std::to_string(n).size();

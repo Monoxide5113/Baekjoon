@@ -10,7 +10,7 @@ int main()
     while (true) {
         int l, p, v;
         std::cin >> l >> p >> v;
-        if (!l && !p && !v) break;
+        if (l == 0 && p == 0 && v == 0) break;
 
         const int cycles = v / p, remaining_days = v % p;
         const int res = cycles * l + std::min(remaining_days, l);

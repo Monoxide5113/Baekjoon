@@ -17,7 +17,7 @@ int main()
         std::bitset<DIGIT_CNT> used;
         for (const auto val : str_num) {
             const int digit = val - ZERO_CHAR;
-            if (!digit) return false;
+            if (digit == 0) return false;
             if (used[digit]) return false;
             used.set(digit);
         }

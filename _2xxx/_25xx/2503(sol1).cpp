@@ -52,7 +52,8 @@ int main()
         }
     }
 
-    std::cout << answers.count() << '\n';
+    const int res = answers.count();
+    std::cout << res << '\n';
 
     return 0;
 }

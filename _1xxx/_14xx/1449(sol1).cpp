@@ -18,7 +18,7 @@ int main()
 
     int res = 1, last_covered_pos = pos[0];
     for (auto it = pos.cbegin() + 1; it != pos.cend(); ++it) {
-        const auto& cur_pos = *it;
+        const auto cur_pos = *it;
         if (cur_pos - last_covered_pos < l) continue;
         last_covered_pos = cur_pos;
         ++res;

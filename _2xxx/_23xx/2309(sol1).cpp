@@ -18,23 +18,20 @@ int main()
 
     std::sort(dwarfs.begin(), dwarfs.end());
 
-    std::pair<int, int> fake_idxs;
-    const int total_sum = std::accumulate(dwarfs.begin(), dwarfs.end(), 0);
-    const int diff = total_sum - TARGET_SUM;
-    bool is_found = false;
-    for (int i = 0; i < TOTAL_CNT - 1 && !is_found; ++i) {
-        for (int j = i + 1; j < TOTAL_CNT; ++j) {
-            const int cur_diff = dwarfs[i] + dwarfs[j];
-            if (cur_diff != diff) continue;
-            fake_idxs = { i, j };
-            is_found = true;
-            break;
+    auto find_fakes = [&]() {
+        const int total_sum = std::accumulate(dwarfs.begin(), dwarfs.end(), 0);
+        const int diff = total_sum - TARGET_SUM;
+        for (int i = 0; i < TOTAL_CNT; ++i) {
+            for (int j = i + 1; j < TOTAL_CNT; ++j) {
+                if (dwarfs[i] + dwarfs[j] != diff) continue;
+                return std::pair(i, j);   
+            }
         }
-    }
+    };
 
-    const auto [fake_idx1, fake_idx2] = fake_idxs;
+    const auto [fake1, fake2] = find_fakes();
     for (const auto val : dwarfs) {
-        if (val == dwarfs[fake_idx1] || val == dwarfs[fake_idx2]) continue;
+        if (val == fake1 || val == fake2) continue;
         std::cout << val << '\n';
     }
 

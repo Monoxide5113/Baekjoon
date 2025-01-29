@@ -23,8 +23,8 @@ int main()
 
     int res = 0;
     const int n_digit_cnt = std::to_string(n).size();
-    const int min_num = std::max(1, n - MAX_VAL_SINGLE_DIGIT * n_digit_cnt), max_num = n;
-    for (int num = min_num; num < max_num; ++num) {
+    const int min_num = std::max(1, n - MAX_VAL_SINGLE_DIGIT * n_digit_cnt);
+    for (int num = min_num; num < n; ++num) {
         const int cur_sum = num + sum_digits(num);
         if (cur_sum != n) continue;
         res = num;

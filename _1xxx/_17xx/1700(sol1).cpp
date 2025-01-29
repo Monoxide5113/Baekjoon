@@ -21,8 +21,8 @@ int main()
     auto find_replace_idx = [&](int start_idx) {
         int replace_idx, furthest_idx = 0;
         for (int i = 0; i < n; ++i) {
-            const auto start_it = schedule.begin() + start_idx + 1, end_it = schedule.end();
-            const auto it = std::find(start_it, end_it, multitap[i]);
+            const auto start_it = schedule.begin() + start_idx + 1;
+            const auto it = std::find(start_it, schedule.end(), multitap[i]);
             if (it == schedule.end()) return i;
 
             const int nxt_used_idx = std::distance(schedule.begin(), it);

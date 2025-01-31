@@ -17,7 +17,7 @@ int main()
     std::vector<Meeting> meetings(n);
     for (auto& [start, end] : meetings)
         std::cin >> start >> end;
-    
+
     std::sort(meetings.begin(), meetings.end());
 
     std::priority_queue<int, std::vector<int>, std::greater<>> min_heap;

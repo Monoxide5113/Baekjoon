@@ -17,15 +17,15 @@ int main()
     std::vector<int> extension_cord(n, 0);
 
     auto find_replace_idx = [&](int start_idx) {
-        int replace_idx, furthest_idx = 0;
+        int replace_idx, furthest_used_idx = 0;
         for (int i = 0; i < n; ++i) {
             const auto search_start = schedule.begin() + start_idx + 1;
             const auto it = std::find(search_start, schedule.end(), extension_cord[i]);
             if (it == schedule.end()) return i;
 
             const int nxt_used_idx = std::distance(schedule.begin(), it);
-            if (nxt_used_idx <= furthest_idx) continue;
-            furthest_idx = nxt_used_idx;
+            if (nxt_used_idx <= furthest_used_idx) continue;
+            furthest_used_idx = nxt_used_idx;
             replace_idx = i;
         }
         return replace_idx;

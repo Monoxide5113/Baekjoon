@@ -17,7 +17,7 @@ int main()
     auto sum_digits = [](int num) {
         const auto str_num = std::to_string(num);
         return std::accumulate(str_num.cbegin(), str_num.cend(), 0, [](int acc, char x) {
-            return acc + (x - ZERO_CHAR); 
+            return acc + (x - ZERO_CHAR);
         });
     };
 

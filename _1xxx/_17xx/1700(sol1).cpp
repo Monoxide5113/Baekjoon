@@ -10,40 +10,40 @@ int main()
     int n, k;
     std::cin >> n >> k;
 
-    std::vector<int> schedule(k);
-    for (auto& val : schedule)
+    std::vector<int> device_order(k);
+    for (auto& val : device_order)
         std::cin >> val;
 
-    std::vector<int> extension_cord(n, 0);
+    std::vector<int> multitap(n, 0);
 
-    auto find_replace_idx = [&](int start_idx) {
-        int replace_idx, furthest_used_idx = 0;
+    auto find_replacement_idx = [&](int cur_idx) {
+        int ret, furthest_nxt_used_idx = 0;
         for (int i = 0; i < n; ++i) {
-            const auto search_start = schedule.begin() + start_idx + 1;
-            const auto it = std::find(search_start, schedule.end(), extension_cord[i]);
-            if (it == schedule.end()) return i;
+            const auto search_start = device_order.begin() + cur_idx + 1;
+            const auto nxt_used_it = std::find(search_start, device_order.end(), multitap[i]);
+            if (nxt_used_it == device_order.end()) return i;
 
-            const int nxt_used_idx = std::distance(schedule.begin(), it);
-            if (nxt_used_idx <= furthest_used_idx) continue;
-            furthest_used_idx = nxt_used_idx;
-            replace_idx = i;
+            const int nxt_used_idx = std::distance(device_order.begin(), nxt_used_it);
+            if (nxt_used_idx <= furthest_nxt_used_idx) continue;
+            furthest_nxt_used_idx = nxt_used_idx;
+            ret = i;
         }
-        return replace_idx;
+        return ret;
     };
 
     int res = 0;
     for (int i = 0; i < k; ++i) {
-        const auto cur_it = std::find(extension_cord.begin(), extension_cord.end(), schedule[i]);
-        if (cur_it != extension_cord.end()) continue;
+        const auto cur_it = std::find(multitap.begin(), multitap.end(), device_order[i]);
+        if (cur_it != multitap.end()) continue;
 
-        const auto available_it = std::find(extension_cord.begin(), extension_cord.end(), 0);
-        if (available_it != extension_cord.end()) {
-            *available_it = schedule[i];
+        const auto empty_it = std::find(multitap.begin(), multitap.end(), 0);
+        if (empty_it != multitap.end()) {
+            *empty_it = device_order[i];
             continue;
         }
 
-        const int replace_idx = find_replace_idx(i);
-        extension_cord[replace_idx] = schedule[i];
+        const int replacement_idx = find_replacement_idx(i);
+        multitap[replacement_idx] = device_order[i];
         ++res;
     }
 

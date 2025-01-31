@@ -2,8 +2,6 @@
 #include <iostream>
 #include <vector>
 
-constexpr int EMPTY_SLOT = 0;
-
 int main()
 {
     std::ios::sync_with_stdio(false);
@@ -16,13 +14,13 @@ int main()
     for (auto& val : schedule)
         std::cin >> val;
 
-    std::vector<int> extension_cord(n, EMPTY_SLOT);
+    std::vector<int> extension_cord(n, 0);
 
     auto find_replace_idx = [&](int start_idx) {
         int replace_idx, furthest_idx = 0;
         for (int i = 0; i < n; ++i) {
-            const auto start_it = schedule.begin() + start_idx + 1;
-            const auto it = std::find(start_it, schedule.end(), extension_cord[i]);
+            const auto search_start = schedule.begin() + start_idx + 1;
+            const auto it = std::find(search_start, schedule.end(), extension_cord[i]);
             if (it == schedule.end()) return i;
 
             const int nxt_used_idx = std::distance(schedule.begin(), it);
@@ -38,9 +36,9 @@ int main()
         const auto cur_it = std::find(extension_cord.begin(), extension_cord.end(), schedule[i]);
         if (cur_it != extension_cord.end()) continue;
 
-        const auto empty_it = std::find(extension_cord.begin(), extension_cord.end(), EMPTY_SLOT);
-        if (empty_it != extension_cord.end()) {
-            *empty_it = schedule[i];
+        const auto available_it = std::find(extension_cord.begin(), extension_cord.end(), 0);
+        if (available_it != extension_cord.end()) {
+            *available_it = schedule[i];
             continue;
         }
 

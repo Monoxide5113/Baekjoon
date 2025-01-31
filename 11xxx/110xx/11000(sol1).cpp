@@ -28,7 +28,6 @@ int main()
         min_heap.push(end);
     }
 
-    std::cout << min_heap.size() << '\n';
-
-    return 0;
+    const int res = min_heap.size();
+    std::cout << res << '\n';
 }

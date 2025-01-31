@@ -37,6 +37,4 @@ int main()
             res = std::min(res, get_mismatched(y, x));
 
     std::cout << res << '\n';
-
-    return 0;
 }

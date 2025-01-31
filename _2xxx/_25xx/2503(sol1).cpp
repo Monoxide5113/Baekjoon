@@ -63,6 +63,4 @@ int main()
 
     const int res = possible_answers.count();
     std::cout << res << '\n';
-
-    return 0;
 }

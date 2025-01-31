@@ -36,6 +36,4 @@ int main()
         std::cin >> n;
         std::cout << tri_sums[n] << '\n';
     }
-
-    return 0;
 }

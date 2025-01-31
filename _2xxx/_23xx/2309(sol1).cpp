@@ -34,6 +34,4 @@ int main()
         if (val == fake1 || val == fake2) continue;
         std::cout << val << '\n';
     }
-
-    return 0;
 }

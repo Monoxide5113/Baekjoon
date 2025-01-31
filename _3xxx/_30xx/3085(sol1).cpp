@@ -52,6 +52,4 @@ int main()
     }
 
     std::cout << res << '\n';
-
-    return 0;
 }

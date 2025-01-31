@@ -17,6 +17,4 @@ int main()
         std::cout << "Case " << tc << ": " << res << '\n';
         ++tc;
     }
-
-    return 0;
 }

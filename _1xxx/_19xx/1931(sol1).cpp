@@ -16,7 +16,7 @@ int main()
     std::vector<Meeting> meetings(n);
     for (auto& [start, end] : meetings)
         std::cin >> start >> end;
-    
+
     std::sort(meetings.begin(), meetings.end(), [](auto a, auto b) {
         return a.second != b.second ? a.second < b.second : a.first < b.first;
     });
@@ -30,6 +30,4 @@ int main()
     }
 
     std::cout << res << '\n';
-
-    return 0;
 }
